@@ -7,7 +7,7 @@ btn_slider.onclick = function goSlider() {
     document.querySelector(".slider").remove()
     document.querySelector(".btn-quiz").remove()
     document.querySelector("footer").remove()
-    document.querySelector("body").style.background = "url(../img/room.jpg) 50%/cover no-repeat fixed"
+    document.querySelector("body").style.background = "url(../img/roomm.jpg) 50%/cover no-repeat fixed" 
     document.querySelector(".squiz").style.display = "flex"
 
 }
