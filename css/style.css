@@ -132,3 +132,8 @@ footer .btn {
     background: #000;
     content: "Назад"
 }
+
+.form-check {
+    font-size: x-large;
+    color: rgb(115, 250, 4);
+}
