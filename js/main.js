@@ -61,7 +61,7 @@ let pbarh2 = document.querySelector('.pbar > h2')
 
 btn_next.onclick = () => {
     if (!userSet.typeHouse) alert('Пожалуйста выбирете тип помещения') 
-    else if(userSet.typeHouse && !userSet.m2 && !document.querySelector('.inputm2')) {
+    else if(userSet.typeHouse && pbarh2.textContent == 'Шаг 1/6') {
         document.querySelector('.row.cardset').classList.add('dnone')
         if(btn_cancel) btn_cancel.textContent = 'Назад'
         pbarh2.textContent = 'Шаг 2/6'
