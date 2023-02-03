@@ -27,6 +27,16 @@ for (let i = 0; i < btn_cards.length; i++) {
 let btn_cancel = document.querySelector('.btn-cancel')
 
 btn_cancel.onclick = () => {
+    if (btn_cancel.textContent == 'Назад' && pbarh2.textContent == 'Шаг 3/6') {
+        document.querySelector('.inputm2').classList.remove('dnone')
+        document.querySelector('.inputr').remove()
+        document.querySelector('.attention > h1').textContent = 'Выбирете площадь объекта'
+        pbarh2.textContent = 'Шаг 2/6'
+        document.querySelector('.progress-bar').style.width = '20%'
+        document.querySelector('.progress-bar').textContent = '20%'
+        return
+    }
+
     if (btn_cancel.textContent == 'Назад' && pbarh2.textContent == 'Шаг 2/6') {
         document.querySelector('.row.cardset').classList.remove('dnone');
         document.querySelector('.inputm2').remove()
@@ -92,7 +102,35 @@ btn_next.onclick = () => {
         let fch2 = document.querySelectorAll('input[name="inlineRadioOptions"]')
         for(let i = 0; i < fch2.length; i++) {fch2[i].addEventListener('click', () => userSet.m2 = document.querySelector(`label[for="inlineRadio${i+1}"]`).textContent)}
 
-    }   
+    }  
+    else if(userSet.typeHouse && pbarh2.textContent == 'Шаг 2/6') {
+        document.querySelector('.inputm2').classList.add('dnone')
+        pbarh2.textContent = 'Шаг 3/6'
+        document.querySelector('.progress-bar').style.width = '35%'
+        document.querySelector('.progress-bar').textContent = '35%'
+        document.querySelector('.attention > h1').textContent = 'Выбирете тип ремонта'
+        document.querySelector('.attention').insertAdjacentHTML('beforeend', `<div class="inputr col-lg-12 col-md-6 col-sm-3">
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio11" value="option1">
+        <label class="form-check-label" for="inlineRadio11">Косметический</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio12" value="option2">
+        <label class="form-check-label" for="inlineRadio12">Капитальный</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio13" value="option3">
+        <label class="form-check-label" for="inlineRadio13">По дизайн-проекту</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio14" value="option4">
+        <label class="form-check-label" for="inlineRadio14">Премиальный</label>
+      </div>
+      </div>`)
+        let fch3 = document.querySelectorAll('input[name="inlineRadioOptions1"]')
+        for(let i = 0; i < fch3.length; i++) {fch3[i].addEventListener('click', () => userSet.rem = document.querySelector(`label[for="inlineRadio1${i+1}"]`).textContent)}
+
+    }  
 }
 
 
