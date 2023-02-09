@@ -28,6 +28,17 @@ let btn_cancel = document.querySelector('.btn-cancel')
 
 btn_cancel.onclick = () => {
 
+    if (btn_cancel.textContent == 'Назад' && pbarh2.textContent == 'Шаг 5/5') {
+    btn_next.textContent = "Далее"  
+    document.querySelector('.inputd').classList.remove('dnone')
+    document.querySelector('.inputf').remove()
+    document.querySelector('.attention > h1').textContent = 'Когда вы планируете приступить к ремонту?'
+    pbarh2.textContent = 'Шаг 4/5'
+    document.querySelector('.progress-bar').style.width = '75%'
+    document.querySelector('.progress-bar').textContent = '75%'
+    return
+    }
+
     if (btn_cancel.textContent == 'Назад' && pbarh2.textContent == 'Шаг 4/5') {
         document.querySelector('.inputr').classList.remove('dnone')
         document.querySelector('.inputd').remove()
@@ -88,6 +99,7 @@ btn_next.onclick = () => {
         document.querySelector('.progress-bar').style.width = '25%'
         document.querySelector('.progress-bar').textContent = '25%'
         document.querySelector('.attention > h1').textContent = 'Выбирете площадь объекта'
+        document.querySelector('.attention').classList.remove('mb-5')
         document.querySelector('.attention').insertAdjacentHTML('beforeend', `<div class="inputm2 col-lg-12 col-md-6 col-sm-3">
         <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -173,6 +185,45 @@ btn_next.onclick = () => {
         for(let i = 0; i < fch4.length; i++) {fch4[i].addEventListener('click', () => userSet.date = document.querySelector(`label[for="inlineRadio2${i+1}"]`).textContent)}
 
     }  
+    else if(userSet.typeHouse && pbarh2.textContent == 'Шаг 4/5') {
+      document.querySelector('.inputd').classList.add('dnone')
+      pbarh2.textContent = 'Шаг 5/5'
+      document.querySelector('.progress-bar').style.width = '95%'
+      document.querySelector('.progress-bar').textContent = '95%'
+      document.querySelector('.attention > h1').textContent = `Почти готово! Введите Ваш номер телефона для того, чтобы мы могли прислать смс с примерным расчётом стоимости, а также забронировать скидку на ремонтные работы`
+      document.querySelector("body").insertAdjacentHTML('beforeend', `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Мы ценим Ваше время</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <h1>Спасибо за заявку!</h1><br>
+            <h3>Мы свяжемся с Вами в ближайшее время и сориентируем Вас по бюджету и срокам ремонта</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          </div>
+        </div>
+      </div>
+          </div>`)
+      document.querySelector('.attention').insertAdjacentHTML('beforeend', `<div class="inputf col-12 mt-5">
+      <form class="telnum">
+          <div class="mb-3">
+              <input type="tel" class="form-control" id="exampleInputtel1" method="post" placeholder="8 (999) 999-99-99" maxlength="11" required"> 
+           </div>
+      </form>
+      </div>`) 
+      btn_cancel.remove()
+      btn_next.classList.add("mt-1")
+      btn_next.textContent = "Отправить"
+if(btn_next.textContent == "Отправить") {
+  btn_next.setAttribute("data-bs-toggle", "modal")
+  btn_next.setAttribute("data-bs-target", "#exampleModal") 
+  }
+  } 
+ 
 }
 
 

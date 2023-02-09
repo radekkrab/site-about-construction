@@ -3,7 +3,7 @@
     --color2: #52339a;
 }
 
-body {
+ body {
     background: url(../img/bgfon.png) top left/300px 300px fixed;
     margin: auto auto;
 }
@@ -136,4 +136,9 @@ footer .btn {
 .form-check {
     font-size: x-large;
     color: #e9e9e9;
+}
+
+.telnum {
+    max-width: 500px;
+    margin: 0 auto;
 }
