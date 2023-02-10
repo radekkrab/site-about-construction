@@ -211,25 +211,21 @@ btn_next.onclick = () => {
       document.querySelector('.attention').insertAdjacentHTML('beforeend', `<div class="inputf col-12 mt-5">
       <form class="telnum">
           <div class="mb-3">
-              <input type="tel" class="form-control" id="exampleInputtel1" method="post" placeholder="8 (999) 999-99-99" maxlength="11" required"> 
-           </div>
+              <input type="tel" class="form-control" id="exampleInputtel1" method="post" placeholder="8 (999) 999-99-99" maxlength="11" required">
+          </div>
       </form>
       </div>`) 
       btn_cancel.remove()
       btn_next.classList.add("mt-1")
       btn_next.textContent = "Отправить"
-if(btn_next.textContent == "Отправить") {
-  btn_next.setAttribute("data-bs-toggle", "modal")
-  btn_next.setAttribute("data-bs-target", "#exampleModal") 
-  }
-  } 
- 
+      btn_next.setAttribute("data-bs-toggle", "modal")
+      btn_next.setAttribute("data-bs-target", "#exampleModal")
+      btn_next.setAttribute("disabled", true)
+      document.querySelector(".form-control").addEventListener("input", function () {
+      if(document.querySelector(".form-control").value.length == 11) {
+      btn_next.removeAttribute("disabled", false)
+      userSet.tel = document.querySelector(".form-control").value
+       }
+     })
+    }   
 }
-
-
-
-
-
-
-
-
