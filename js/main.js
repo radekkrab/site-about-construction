@@ -221,11 +221,24 @@ btn_next.onclick = () => {
       btn_next.setAttribute("data-bs-toggle", "modal")
       btn_next.setAttribute("data-bs-target", "#exampleModal")
       btn_next.setAttribute("disabled", true)
-      document.querySelector(".form-control").addEventListener("input", function () {
+      document.querySelector(".form-control").addEventListener("input", async function () {
       if(document.querySelector(".form-control").value.length == 11) {
       btn_next.removeAttribute("disabled", false)
       userSet.tel = document.querySelector(".form-control").value
-       }
+      let response = fetch('sendmail.php', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(userSet)
+      });
+       if (response.ok) {
+        let result = response.json();
+        alert(result.message);
+        } else {
+          alert('Ошибка!')
+        }
+      }
      })
     }   
 }
