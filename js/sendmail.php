@@ -27,6 +27,8 @@
 
     $mail->Body = $body;
 
+    $mail->send();
+
     if (!$mail->send()) {
         $message = 'Ошибка';
     } else {
