@@ -211,7 +211,7 @@ btn_next.onclick = () => {
       document.querySelector('.attention').insertAdjacentHTML('beforeend', `<div class="inputf col-12 mt-5">
       <form class="telnum">
           <div class="mb-3">
-              <input type="tel" class="form-control" id="exampleInputtel1" method="post" placeholder="8 (999) 999-99-99" maxlength="11" required">
+              <input type="tel" class="form-control" id="exampleInputtel1" placeholder="8 (999) 999-99-99" maxlength="11" required">
           </div>
       </form>
       </div>`) 
@@ -224,21 +224,22 @@ btn_next.onclick = () => {
       document.querySelector(".form-control").addEventListener("input", async function () {
       if(document.querySelector(".form-control").value.length == 11) {
       btn_next.removeAttribute("disabled", false)
-      userSet.tel = document.querySelector(".form-control").value
-      let response = fetch('sendmail.php', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify(userSet)
-      });
-       if (response.ok) {
-        let result = response.json();
-        alert(result.message);
-        } else {
-          alert('Ошибка!')
-        }
+      userSet.tel = document.querySelector(".form-control").value;  
       }
+     
      })
     }   
+    else if(userSet.tel.length == 11 && pbarh2.textContent == 'Шаг 5/5') {
+      (async () => {
+          let response = await fetch('sendmail.php', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+          body: JSON.stringify(userSet)
+          }); 
+          })();
+}
+
+
 }
