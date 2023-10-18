@@ -3,7 +3,7 @@
     --color2: #52339a;
 }
 
-s body {
+body {
     background: url(../img/bgfon.png) top left/300px 300px fixed;
     margin: auto auto;
 }
